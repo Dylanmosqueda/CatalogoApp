@@ -2,5 +2,5 @@
   <Project Path="CatalogoApp.Application/CatalogoApp.Application.csproj" />
   <Project Path="CatalogoApp.Domain/CatalogoApp.Domain.csproj" />
   <Project Path="CatalogoApp.Infrastructure/CatalogoApp.Infrastructure.csproj" />
-  <Project Path="CatalogoApp.Pesentation/CatalogoApp.Pesentation.csproj" />
+  <Project Path="CatalogoApp.Pesentation/CatalogoApp.Presentation.csproj" />
 </Solution>
