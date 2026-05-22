@@ -1,8 +1,23 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "UAC COMMAND CENTER";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container text-center mt-5">
+    <!-- Icono estilo Doom -->
+    <div class="mb-4">
+        <span style="font-size: 6rem; color: #8b0000; text-shadow: 2px 2px #000;">☣</span>
+    </div>
+
+    <!-- Título con estilo industrial -->
+    <h1 class="display-2" style="font-family: 'Bangers', cursive; color: #ff3333; letter-spacing: 5px; text-transform: uppercase;">
+        BIENVENIDO, MARINE
+    </h1>
+
+    <p class="text-uppercase lead" style="color: #ffcc00; font-weight: bold; letter-spacing: 2px; border-bottom: 1px solid #8b0000; display: inline-block; padding: 5px;">
+        Acceso al catalo de videojuegos
+    </p>
+        <a asp-controller="Catalogo" asp-action="Index" class="btn btn-primary btn-lg rounded-0 px-5 w-100">
+            ENTRAR AL CATÁLOGO
+        </a>
+    </div>
 </div>

@@ -1,0 +1,93 @@
+﻿@model CatalogoApp.Domain.Models.Item
+
+@{
+    ViewData["Title"] = "DETALLE DE ACTIVO - " + Model.Titulo;
+}
+
+<div class="container mt-5 p-4" style="background: rgba(0,0,0,0.8); border: 2px solid #8b0000; color: #d1d1d1;">
+
+    <!-- TÍTULO Y DETALLES -->
+    <h1 class="display-3" style="font-family: 'Bangers', cursive; color: #ff3333; letter-spacing: 3px;">@Model.Titulo</h1>
+    <hr class="border-danger" />
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <p><strong>GÉNERO:</strong> @Model.Genero</p>
+            <p><strong>CONSOLA:</strong> @Model.Consola</p>
+            <p><strong>AÑO:</strong> @Model.Ano</p>
+        </div>
+    </div>
+    <p class="lead">@Model.Descripcion</p>
+
+    <!-- LISTA DE RESEÑAS -->
+    <hr class="border-danger" />
+    <h3 class="text-danger" style="font-family: 'Bangers', cursive;">[ RESEÑAS ]</h3>
+
+    <div class="mb-4">
+        @if (Model.Resenas != null && Model.Resenas.Any())
+        {
+            <ul class="list-group list-group-flush">
+                @foreach (var resena in Model.Resenas)
+                {
+                    <li class="list-group-item" style="background: #1a1a1a; border-left: 5px solid #8b0000; color: white; margin-bottom: 10px;">
+                        <div class="d-flex w-100 justify-content-between">
+                            <strong>@resena.Usuario</strong>
+                            <small class="text-muted">@resena.Fecha.ToString("dd/MM/yyyy")</small>
+                        </div>
+                        <p class="mb-1">@resena.Comentario</p>
+                        <small style="color: #ffcc00;">@(new string('★', resena.Calificacion))</small>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p class="text-muted">Aún no hay reseñas. ¡Sé el primero en informar!</p>
+        }
+    </div>
+
+    <!-- FORMULARIO DE RESEÑA (Protegido por Autenticación) -->
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="card my-4" style="background: #1a1a1a; border: 1px solid #8b0000;">
+            <div class="card-header" style="background: #8b0000; color: white; font-family: 'Bangers', cursive;">
+                TERMINAL DE ENTRADA DE RESEÑA
+            </div>
+            <div class="card-body">
+                <form asp-controller="Items" asp-action="AgregarResena" method="post">
+                    <!-- Datos ocultos -->
+                    <input type="hidden" name="ItemId" value="@Model.Id" />
+                    <input type="hidden" name="Usuario" value="@User.Identity.Name" />
+
+                    <div class="mb-3">
+                        <label class="form-label text-light">CALIFICACIÓN</label>
+                        <select class="form-select bg-dark text-light border-secondary" name="Calificacion" required>
+                            <option value="5">★★★★★ (5 - Excelente)</option>
+                            <option value="4">★★★★☆ (4 - Bueno)</option>
+                            <option value="3">★★★☆☆ (3 - Regular)</option>
+                            <option value="2">★★☆☆☆ (2 - Malo)</option>
+                            <option value="1">★☆☆☆☆ (1 - Muy malo)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label text-light">TU RESEÑA</label>
+                        <textarea class="form-control bg-dark text-light border-secondary" name="Comentario" rows="3" placeholder="Escribe tu informe aquí..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger w-100 rounded-0" style="font-family: 'Bangers', cursive; font-size: 1.2rem;">
+                        SUBIR INFORME
+                    </button>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center rounded-0" style="background: #5a0000; border: none; color: white;">
+            SISTEMA RESTRINGIDO: Debes <a asp-controller="Account" asp-action="Login" class="text-warning">INICIAR SESIÓN</a> para enviar un informe.
+        </div>
+    }
+
+    <a asp-action="Index" class="btn btn-outline-light rounded-0 mt-3">← VOLVER AL CATÁLOGO</a>
+</div>

@@ -1,31 +1,174 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
+/* Estilo DOOM para CatalogoApp */
 
 body {
-  margin-bottom: 60px;
+    background-color: #1a0a0a !important; /* Fondo rojo muy oscuro */
+    color: #e0e0e0 !important;
+    font-family: 'Courier New', Courier, monospace; /* Estilo terminal */
+    border-top: 10px solid #8b0000; /* Borde superior tipo sangre/marco */
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* Header y Navbar */
+header .navbar {
+    background-color: #000 !important;
+    border-bottom: 3px solid #8b0000 !important;
+    color: #ff4500 !important;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.navbar-brand, .nav-link {
+    color: #ff4500 !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 2px 2px #000;
 }
+
+    .nav-link:hover {
+        color: #fff !important;
+        background-color: #8b0000;
+    }
+
+/* Contenedor principal */
+.container {
+    background-color: #260d0d;
+    border: 2px solid #4a0000;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px #8b0000;
+}
+
+/* Footer estilo Doom */
+footer {
+    background-color: #000 !important;
+    color: #8b0000 !important;
+    border-top: 3px solid #8b0000 !important;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Botones y elementos interactivos */
+.btn, .navbar-toggler {
+    background-color: #8b0000 !important;
+    color: #fff !important;
+    border: 1px solid #ff4500 !important;
+    border-radius: 0 !important; /* Estilo cuadrado retro */
+}
+
+/* Ajuste de tipografía general */
+h1, h2, h3 {
+    color: #ff4500 !important;
+    text-shadow: 2px 2px #000;
+    font-family: 'Impact', sans-serif;
+    /* --- ANIMACIONES ESTILO DOOM --- */
+    /* 1. Efecto de parpadeo suave para el texto (Estilo Terminal/Monitor antiguo) */
+    @keyframes flicker {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.9;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    body {
+        animation: flicker 0.1s infinite;
+    }
+        /* 2. Efecto de escaneo (Líneas que bajan por la pantalla) */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 9999;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            animation: scanline 10s linear infinite;
+        }
+
+    @keyframes scanline {
+        0% {
+            background-position: 0 0;
+        }
+
+        100% {
+            background-position: 0 100%;
+        }
+    }
+    /* 3. Animación de los botones al pasar el mouse (Efecto "Damage") */
+    .btn:hover, .nav-link:hover {
+        transform: scale(1.05);
+        background-color: #ff0000 !important;
+        box-shadow: 0 0 15px #ff4500;
+        transition: all 0.2s ease-in-out;
+        cursor: crosshair; /* Cambia el cursor por una mira */
+    }
+    /* 4. Animación de entrada para el contenedor (Aparece con brillo) */
+    .container {
+        animation: glow-pulse 3s infinite alternate;
+    }
+
+    @keyframes glow-pulse {
+        from {
+            box-shadow: 0 0 10px #8b0000;
+        }
+
+        to {
+            box-shadow: 0 0 30px #ff0000;
+        }
+    }
+    /* 5. El logo de inicio (navbar-brand) tiene un efecto de pulso */
+    .navbar-brand {
+        animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.05);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+    /* Estilo general del contenedor de protocolos */
+    .protocol-box {
+        margin: 15px 0;
+        padding: 15px;
+        border: 1px solid #444;
+        background: rgba(0, 0, 0, 0.6);
+        border-left: 5px solid #8b0000; /* Borde rojo característico */
+        transition: 0.3s;
+    }
+        /* Efecto al pasar el mouse por cada protocolo */
+        .protocol-box:hover {
+            border-left: 5px solid #ff4500;
+            background: rgba(20, 0, 0, 0.8);
+            transform: translateX(10px);
+        }
+
+        .protocol-box h3 {
+            color: #ff4500;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .protocol-box p {
+            color: #cccccc;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+}
+

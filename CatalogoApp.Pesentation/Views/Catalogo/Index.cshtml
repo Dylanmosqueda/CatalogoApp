@@ -1,0 +1,42 @@
+﻿@model List<CatalogoApp.Domain.Models.Item>
+
+<div class="container mt-5">
+    <h1 class="display-3 text-danger" style="font-family: 'Bangers', cursive; letter-spacing: 4px;">CATÁLOGO DE VIDEOJUEGOS</h1>
+    <hr class="border-danger" />
+
+    <!-- Filtro por Genero estilo Terminal -->
+    <div class="mb-4 p-3" style="background: #1a1a1a; border-left: 4px solid #8b0000;">
+        <span class="text-white-50">FILTRAR POR: </span>
+        <a asp-action="Index" class="text-warning text-decoration-none mx-2">TODOS</a>
+        @foreach (var gen in ViewBag.Generos as List<string>)
+        {
+            <span class="text-danger">|</span>
+            <a asp-action="Index" asp-route-genero="@gen" class="text-light text-decoration-none mx-2">@gen.ToUpper()</a>
+        }
+    </div>
+
+    <!-- Lista de Items estilo DOOM -->
+    <ul class="list-unstyled">
+        @foreach (var item in Model)
+        {
+            <li class="mb-3 p-3" style="background: #121212; border: 1px solid #333; transition: 0.3s;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <a asp-action="Detalle" asp-route-id="@item.Id"
+                       class="text-decoration-none text-light fs-4"
+                       style="font-family: 'Bangers', cursive; letter-spacing: 1px;">
+                        > @item.Titulo.ToUpper()
+                    </a>
+                    <span class="badge bg-danger rounded-0">@item.Genero.ToUpper()</span>
+                    <span class="text-warning">@item.Ano</span>
+                </div>
+            </li>
+        }
+    </ul>
+
+    <hr class="border-danger" />
+
+    <!-- Botón de acción -->
+    <a asp-action="Agregar" class="btn btn-primary btn-lg rounded-0 px-4">
+        + AGREGAR VIDEOJUEGO
+    </a>
+</div>

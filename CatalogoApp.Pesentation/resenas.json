@@ -1,0 +1,32 @@
+[
+  {
+    "Id": 1,
+    "UsuarioId": 0,
+    "Usuario": "humanShadow",
+    "Comentario": "el mejor juego",
+    "Calificacion": 5,
+    "Fecha": "2026-05-20T22:11:29.8471025-06:00",
+    "ItemId": 1,
+    "Item": null
+  },
+  {
+    "Id": 2,
+    "UsuarioId": 0,
+    "Usuario": "humanShadow",
+    "Comentario": "El mejor juego que e jugado",
+    "Calificacion": 4,
+    "Fecha": "2026-05-20T22:12:14.9808805-06:00",
+    "ItemId": 1,
+    "Item": null
+  },
+  {
+    "Id": 3,
+    "UsuarioId": 0,
+    "Usuario": "humanShadow05",
+    "Comentario": "Muy buen juego ",
+    "Calificacion": 5,
+    "Fecha": "2026-05-21T18:26:27.6545815-06:00",
+    "ItemId": 2,
+    "Item": null
+  }
+]

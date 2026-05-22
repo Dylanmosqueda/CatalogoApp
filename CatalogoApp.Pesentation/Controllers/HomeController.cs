@@ -1,5 +1,5 @@
+using CatalogoApp.Domain.Models;
 using System.Diagnostics;
-using CatalogoApp.Pesentation.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CatalogoApp.Pesentation.Controllers

@@ -1,0 +1,29 @@
+[
+  {
+    "Id": 1,
+    "Titulo": "Devil May Cry",
+    "Genero": "Hack and Slash",
+    "Consola": "PlayStation 2",
+    "Ano": 2001,
+    "Descripcion": "Dante, cazador de demonios, enfrenta a Mundus.",
+    "Resenas": []
+  },
+  {
+    "Id": 2,
+    "Titulo": "God of War",
+    "Genero": "Aventura",
+    "Consola": "Xbox",
+    "Ano": 1999,
+    "Descripcion": "test",
+    "Resenas": []
+  },
+  {
+    "Id": 3,
+    "Titulo": "Halo",
+    "Genero": "Aventura",
+    "Consola": "Xbox",
+    "Ano": 2005,
+    "Descripcion": "Espartano que combate covenants",
+    "Resenas": []
+  }
+]
